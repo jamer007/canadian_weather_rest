@@ -9,7 +9,7 @@ from ec_weather import ECWeather
 app = Flask(__name__)
 
 
-@app.route('/cw/<coord>')
+@app.route('/<coord>')
 def get_weather(coord=None):
     if coord:
         coord = coord.split(',')
@@ -23,16 +23,16 @@ def get_weather(coord=None):
         return {}
 
 
-@app.route('/accuweather/<coord>')
-def get_accuweather_current(coord=None):
-    dir_path = os.path.dirname(os.path.realpath(__file__))
-    sample_good_input_data_file_path = "accuweather_sample.json"
-    with open(os.path.join(dir_path, sample_good_input_data_file_path)) as file:
-        json_data = json.load(file)
-
-        print(json_data)
-
-    return json_data
+# @app.route('/accuweather/<coord>')
+# def get_accuweather_current(coord=None):
+#     dir_path = os.path.dirname(os.path.realpath(__file__))
+#     sample_good_input_data_file_path = "accuweather_sample.json"
+#     with open(os.path.join(dir_path, sample_good_input_data_file_path)) as file:
+#         json_data = json.load(file)
+#
+#         print(json_data)
+#
+#     return json_data
 
 
 def get_cw_current_weather(lat: float, lon: float) -> dict:
